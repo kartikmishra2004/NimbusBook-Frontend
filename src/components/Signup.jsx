@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Register = () => {
+const Signup = () => {
     return (
         <div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
             <div class="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
@@ -75,9 +75,9 @@ const Register = () => {
                                         Create an account
                                     </span>
                                 </button>
-                                <p class="mt-6 text-xs text-gray-600 text-center">
+                                <p class="mt-6 text-gray-600 text-center text-sm">
                                     Already have an account?&#160;
-                                    <Link to='/login' class="border-b border-gray-500 border-dotted">
+                                    <Link to='/login' class="border-b text-sm border-gray-500 border-dotted">
                                         Login here
                                     </Link>
                                 </p>
@@ -95,4 +95,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default Signup

@@ -5,14 +5,24 @@ import {
   Routes,
   Route,
 } from 'react-router-dom'
-import Register from './components/Register'
+import Signup from './components/Signup'
 import Login from './components/Login'
+import Navbar from './components/Navbar'
+import Home from './components/Home'
+import About from './components/About'
+import Features from './components/Features';
+import Contact from './components/Contact'
 
 const App = () => {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
-        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/about" element={<About />} />
+        <Route exact path="/features" element={<Features />} />
+        <Route exact path="/contact" element={<Contact />} />
+        <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>

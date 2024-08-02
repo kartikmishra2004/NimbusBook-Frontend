@@ -72,9 +72,9 @@ const Login = () => {
                                         Login
                                     </span>
                                 </button>
-                                <p class="mt-6 text-xs text-gray-600 text-center">
+                                <p class="mt-6 text-sm text-gray-600 text-center">
                                     Don't have an account?&#160;
-                                    <Link to='/register' class="border-b border-gray-500 border-dotted">
+                                    <Link to='/signup' class="border-b text-sm border-gray-500 border-dotted">
                                     Create an account here
                                     </Link>
                                 </p>
