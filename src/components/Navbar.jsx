@@ -49,6 +49,10 @@ const Navbar = () => {
                                 <Link to="/contact"
                                     className="block text-center py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-[#667eea] lg:p-0 ">Contact</Link>
                             </li>
+                            <li>
+                                <Link to="/notes"
+                                    className="block text-center py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-[#667eea] lg:p-0 ">Notes</Link>
+                            </li>
                         </ul>
                     </div>
                 </div>

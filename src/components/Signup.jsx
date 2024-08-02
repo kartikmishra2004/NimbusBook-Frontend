@@ -1,15 +1,17 @@
 import { React, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
 
     document.title = "NimbusBook - Signup";
 
     const [user, setUser] = useState({
-        fullname: "",
+        fullName: "",
         email: "",
         password: "",
     });
+
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         let name = e.target.name;
@@ -31,8 +33,23 @@ const Signup = () => {
                 },
                 body: JSON.stringify(user),
             });
+            const res_data = await response.json();
+            if (response.ok) {
+                storeTokenInLS(res_data.token);
+                setUser({
+                    fullName: "",
+                    email: "",
+                    password: "",
+                });
+                navigate('/login');
+            }
+            else {
+                console.log("Failed to signup!!");
+
+            }
+
         } catch (error) {
-            console.log("Signup failed!!");
+            console.log("Signup failed!!", error);
         }
     }
 
@@ -95,8 +112,8 @@ const Signup = () => {
 
                             <form onSubmit={handleSubmit} className="mx-auto max-w-xs">
                                 <input
-                                    name='fullname'
-                                    onChange={handleChange} value={user.fullname}
+                                    name='fullName'
+                                    onChange={handleChange} value={user.fullName}
                                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                     type="text" placeholder="Full name" />
                                 <input
