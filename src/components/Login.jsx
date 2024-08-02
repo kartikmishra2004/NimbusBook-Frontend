@@ -10,7 +10,7 @@ const Login = () => {
                         <h1 className='text-[#667eea] font-bold text-2xl text-center'>NimbusBook</h1>
                     </div>
                     <div class="mt-12 flex flex-col items-center">
-                        <h1 class="text-2xl xl:text-3xl font-extrabold">
+                        <h1 class="text-2xl xl:text-3xl font-bold">
                             Login
                         </h1>
                         <div class="w-full flex-1 mt-8">

@@ -10,7 +10,7 @@ const Register = () => {
                         <h1 className='text-[#667eea] font-bold text-2xl text-center'>NimbusBook</h1>
                     </div>
                     <div class="mt-12 flex flex-col items-center">
-                        <h1 class="text-2xl xl:text-3xl font-extrabold">
+                        <h1 class="text-2xl xl:text-3xl font-bold">
                             Create an account
                         </h1>
                         <div class="w-full flex-1 mt-8">
@@ -62,6 +62,9 @@ const Register = () => {
                             <div class="mx-auto max-w-xs">
                                 <input
                                     class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                    type="email" placeholder="Full name" />
+                                <input
+                                    class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                                     type="email" placeholder="Email" />
                                 <input
                                     class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
@@ -75,7 +78,7 @@ const Register = () => {
                                 <p class="mt-6 text-xs text-gray-600 text-center">
                                     Already have an account?&#160;
                                     <Link to='/login' class="border-b border-gray-500 border-dotted">
-                                    Login here
+                                        Login here
                                     </Link>
                                 </p>
                             </div>
