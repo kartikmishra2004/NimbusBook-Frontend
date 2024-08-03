@@ -15,7 +15,7 @@ const Navbar = () => {
         }
     }
     return (
-        <nav className="bg-white border-zinc-200 border-b-2 font-nunito fixed w-[100%]">
+        <nav className="bg-white border-zinc-200 border-b-2 font-nunito fixed w-[100%] z-50">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-[1.25rem]">
                 <Link to='/' className="flex items-center space-x-3 rtl:space-x-reverse">
                     <span className="self-center text-3xl font-bold text-indigo-500 whitespace-nowrap">NimbusBook</span>
@@ -27,7 +27,7 @@ const Navbar = () => {
                     </svg>
                 </button>
                 <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-                    <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row gap-16 md:mt-0 md:border-0 md:bg-white">
+                    <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row lg:gap-16 md:mt-0 md:border-0 md:bg-white">
                         <li>
                             <Link to="/"
                                 className="block text-center py-2 pl-3 pr-4 hover:text-indigo-600 text-indigo-500 text-[1rem] border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0">Home</Link>
