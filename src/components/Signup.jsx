@@ -1,19 +1,22 @@
 import { React, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../storage/Auth.jsx';
 
 const Signup = () => {
-
-    document.title = "NimbusBook - Signup";
 
     const [user, setUser] = useState({
         fullName: "",
         email: "",
-        password: "",
+        password: ""
     });
+
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
-    const handleChange = (e) => {
+    const { storeTokenInLS } = useAuth();
+
+    const handleInput = (e) => {
         let name = e.target.name;
         let value = e.target.value;
 
@@ -25,31 +28,34 @@ const Signup = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true)
         try {
             const response = await fetch('http://localhost:3000/api/v1/auth/register', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(user),
+                body: JSON.stringify(user)
             });
+
             const res_data = await response.json();
+
             if (response.ok) {
                 storeTokenInLS(res_data.token);
                 setUser({
-                    fullName: "",
+                    username: "",
                     email: "",
-                    password: "",
+                    password: ""
                 });
-                navigate('/login');
+                setLoading(false);
+                console.log("Signup successful!!");
+                navigate("/login");
+            } else {
+                console.log("Signup failed!!");
+                setLoading(false);
             }
-            else {
-                console.log("Failed to signup!!");
-
-            }
-
         } catch (error) {
-            console.log("Signup failed!!", error);
+            console.log("Registeration failed!!", error);
         }
     }
 
@@ -110,22 +116,25 @@ const Signup = () => {
                                 </div>
                             </div>
 
-                            <form onSubmit={handleSubmit} className="mx-auto max-w-xs">
+                            <form onSubmit={handleSubmit} action='#' className="mx-auto max-w-xs">
                                 <input
                                     name='fullName'
-                                    onChange={handleChange} value={user.fullName}
+                                    onChange={handleInput} value={user.fullName}
                                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                    type="text" placeholder="Full name" />
+                                    type="text"
+                                    placeholder="Full name" autoComplete='on' />
                                 <input
                                     name='email'
-                                    onChange={handleChange} value={user.email}
+                                    onChange={handleInput} value={user.email}
                                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                                    type="email" placeholder="Email" />
+                                    type="email"
+                                    placeholder="Email" autoComplete='on' />
                                 <input
                                     name='password'
-                                    onChange={handleChange} value={user.password}
+                                    onChange={handleInput} value={user.password}
                                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                                    type="password" placeholder="Password" />
+                                    type="password"
+                                    placeholder="Password" autoComplete='on' />
                                 <button
                                     type='submit'
                                     className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">

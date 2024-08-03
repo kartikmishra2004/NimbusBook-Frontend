@@ -1,7 +1,58 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../storage/Auth.jsx'
 
 const Login = () => {
+
+    document.title = "NimbusBook - Login"
+
+    const [user, setUser] = useState({
+        email: "",
+        password: "",
+    });
+
+    const navigate = useNavigate();
+
+    const { storeTokenInLS } = useAuth();
+
+    const handleChange = (e) => {
+        let name = e.target.name;
+        let value = e.target.value;
+
+        setUser({
+            ...user,
+            [name]: value
+        });
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch("http://localhost:3000/api/v1/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(user)
+            });
+
+            const res_data = await response.json();
+            if (response.ok) {
+                storeTokenInLS(res_data.token);
+                setUser({
+                    email: "",
+                    password: "",
+                })
+                navigate("/notes");
+            } else {
+                console.log("Login failed!!!");
+            }
+        } catch (error) {
+            console.log("Login failed!!");
+
+        }
+    }
+
     return (
         <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
             <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
@@ -59,14 +110,21 @@ const Login = () => {
                                 </div>
                             </div>
 
-                            <div className="mx-auto max-w-xs">
+                            <form onSubmit={handleSubmit} action='#' className="mx-auto max-w-xs">
                                 <input
+                                    onChange={handleChange}
+                                    value={user.email}
+                                    name='email'
                                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                    type="email" placeholder="Email" />
+                                    type="email" placeholder="Email" autoComplete='on'/>
                                 <input
+                                    onChange={handleChange}
+                                    value={user.password}
+                                    name='password'
                                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                                    type="password" placeholder="Password" />
+                                    type="password" placeholder="Password" autoComplete='on'/>
                                 <button
+                                    type='submit'
                                     className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                                     <span className="ml-3">
                                         Login
@@ -75,10 +133,10 @@ const Login = () => {
                                 <p className="mt-6 text-sm text-gray-600 text-center">
                                     Don't have an account?&#160;
                                     <Link to='/signup' className="border-b text-sm border-gray-500 border-dotted">
-                                    Create an account here
+                                        Create an account here
                                     </Link>
                                 </p>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
