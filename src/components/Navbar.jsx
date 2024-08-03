@@ -1,6 +1,7 @@
 import { React, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useAuth } from '../storage/Auth';
+import logo from '../assets/logo.svg'
 
 const Navbar = () => {
     const { isLoggedIn } = useAuth();
@@ -17,8 +18,8 @@ const Navbar = () => {
     return (
         <nav className="bg-white border-zinc-200 border-b-2 font-nunito fixed w-[100%] z-50">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-[1.25rem]">
-                <Link to='/' className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <span className="self-center text-3xl font-bold text-indigo-500 whitespace-nowrap">NimbusBook</span>
+                <Link to='/' className="flex items-center">
+                    <span><img className='w-[35px] mr-1' src={logo} alt="logo" /></span><span className="self-center text-3xl font-bold text-indigo-500 whitespace-nowrap">NimbusBook</span>
                 </Link>
                 <button onClick={handleToggleMenu} data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-default" aria-expanded="false">
                     <span className="sr-only">Open main menu</span>
@@ -43,14 +44,14 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-                    <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row gap-3 md:mt-0 md:border-0 md:bg-white">
+                    <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row gap-4 md:mt-0 md:border-0 md:bg-white">
                         {isLoggedIn ? <li>
                             <Link to="/logout"
-                                className="text-white bg-indigo-500 hover:bg-indigo-700 transition-all duration-300 ease-in-out focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2">Logout</Link>
+                                className="text-white bg-indigo-500 border-indigo-500 border-2 hover:bg-indigo-700 transition-all duration-300 ease-in-out focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2">Logout</Link>
                         </li> : ""}
                         {isLoggedIn ? "" : (<><li>
                             <Link to="/signup"
-                                className="text-white bg-indigo-500 hover:bg-indigo-700 transition-all duration-300 ease-in-out font-medium rounded-lg text-sm px-5 py-2.5 mb-2">Signup</Link>
+                                className="text-white bg-indigo-500 border-indigo-500 border-2 hover:bg-indigo-700 transition-all duration-300 ease-in-out font-medium rounded-lg text-sm px-5 py-2.5 mb-2">Signup</Link>
                         </li>
                             <li>
                                 <Link to="/login"

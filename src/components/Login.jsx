@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../storage/Auth.jsx'
 import { toast } from 'react-toastify';
+import logo from '../assets/logo.svg'
 
 const Login = () => {
 
@@ -59,8 +60,8 @@ const Login = () => {
         <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center pt-[4.5rem]">
             <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
                 <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
-                    <div>
-                        <h1 className='text-indigo-500 font-bold text-2xl text-center'>NimbusBook</h1>
+                    <div className='sm:flex hidden justify-center items-center'>
+                        <span><img className='w-[25px] mr-1' src={logo} alt="logo" /></span><span className='text-indigo-500 font-bold text-2xl text-center'>NimbusBook</span>
                     </div>
                     <div className="mt-12 flex flex-col items-center">
                         <h1 className="text-2xl xl:text-3xl font-bold">

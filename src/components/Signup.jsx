@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../storage/Auth.jsx';
 import { toast } from 'react-toastify';
+import logo from '../assets/logo.svg'
 
 const Signup = () => {
 
@@ -67,12 +68,12 @@ const Signup = () => {
         <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center pt-[4.5rem]">
             <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
                 <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
-                    <div>
-                        <h1 className='text-indigo-500 font-bold text-2xl text-center'>NimbusBook</h1>
+                    <div className='sm:flex hidden justify-center items-center'>
+                    <span><img className='w-[25px] mr-1' src={logo} alt="logo" /></span><span className='text-indigo-500 font-bold text-2xl text-center'>NimbusBook</span>
                     </div>
                     <div className="mt-12 flex flex-col items-center">
                         <h1 className="text-2xl xl:text-3xl font-bold">
-                            Create an account
+                            Signup
                         </h1>
                         <div className="w-full flex-1 mt-8">
                             <div className="flex flex-col items-center">
@@ -139,7 +140,7 @@ const Signup = () => {
                                     type='submit'
                                     className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                                     <span className="ml-3">
-                                        Create an account
+                                        Signup
                                     </span>
                                 </button>
                                 <p className="mt-6 text-gray-600 text-center text-sm">
