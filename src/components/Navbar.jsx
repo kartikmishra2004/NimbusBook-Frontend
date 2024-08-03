@@ -59,37 +59,37 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div id="mobileNav"
-                    className={`${mobileNav} z-10 md:hidden flex fixed items-center flex-col gap-8 py-[1.7rem] border-y-2 border-zinc-200 px-4 text-2xl text-center bg-white h-max inset-0 top-[5rem] w-[100%] ease-in-out duration-500 cursor-pointer`}>
-                    <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+                    className={`${mobileNav} z-10 md:hidden flex justify-center fixed items-center flex-col gap-8 border-y-2 border-zinc-200 px-4 text-[1.2rem] text-center bg-white h-max inset-0 top-[5rem] w-[100%] ease-in-out duration-500 cursor-pointer`}>
+                    <ul className="font-medium flex flex-col p-4 md:p-0 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
                         <li>
                             <Link to="/"
                                 onClick={handleToggleMenu}
-                                className="block text-center py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-indigo-500 lg:p-0">Home</Link>
+                                className="block text-center py-2 pl-3 pr-4 text-indigo-500 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-indigo-500 lg:p-0">Home</Link>
                         </li>
                         <li>
                             <Link to="/notes"
                                 onClick={handleToggleMenu}
-                                className="block text-center py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-indigo-500 lg:p-0">Notes</Link>
+                                className="block text-center py-2 pl-3 pr-4 text-indigo-500 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-indigo-500 lg:p-0">Notes</Link>
                         </li>
                         <li>
                             <Link to="/contact"
                                 onClick={handleToggleMenu}
-                                className="block text-center py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-indigo-500 lg:p-0 ">Contact</Link>
+                                className="block text-center py-2 pl-3 pr-4 text-indigo-500 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-indigo-500 lg:p-0 ">Contact</Link>
                         </li>
                         {isLoggedIn ? <li>
                             <Link to="/logout"
                                 onClick={handleToggleMenu}
-                                className="block text-center py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-indigo-500 lg:p-0 ">Logout</Link>
+                                className="block text-center py-2 pl-3 pr-4 text-red-500 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-indigo-500 lg:p-0 ">Logout</Link>
                         </li> : ""}
                         {isLoggedIn ? "" : (<><li>
                             <Link to="/signup"
                                 onClick={handleToggleMenu}
-                                className="block text-center py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-indigo-500 lg:p-0 ">Signup</Link>
+                                className="block text-center py-2 pl-3 pr-4 text-indigo-500 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-indigo-500 lg:p-0 ">Signup</Link>
                         </li>
                             <li>
                                 <Link to="/login"
                                     onClick={handleToggleMenu}
-                                    className="block text-center py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-indigo-500 lg:p-0 ">Login</Link>
+                                    className="block text-center py-2 pl-3 pr-4 text-indigo-500 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-indigo-500 lg:p-0 ">Login</Link>
                             </li></>)}
                     </ul>
                 </div>
