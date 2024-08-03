@@ -15,7 +15,7 @@ const Navbar = () => {
         }
     }
     return (
-        <nav className="bg-white border-zinc-200 border-2 font-nunito">
+        <nav className="bg-white border-zinc-200 border-b-2 font-nunito fixed w-[100%]">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-[1.25rem]">
                 <Link to='/' className="flex items-center space-x-3 rtl:space-x-reverse">
                     <span className="self-center text-3xl font-bold text-indigo-500 whitespace-nowrap">NimbusBook</span>

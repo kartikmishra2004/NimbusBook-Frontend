@@ -64,7 +64,7 @@ const Signup = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
+        <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center pt-[4.5rem]">
             <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
                 <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
                     <div>
@@ -112,14 +112,10 @@ const Signup = () => {
                                     </span>
                                 </button>
                             </div>
-
-                            <div className="my-12 border-b text-center">
-                                <div
-                                    className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
-                                    Or signup with e-mail
-                                </div>
+                            <div
+                                className="tracking-wider text-center flex text-sm my-10 items-center justify-center text-zinc-500">
+                                <svg height="5" width="70" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="10" x2="250" y2="10" style={{ stroke: "#d2d2d2", strokeWidth: "12" }} /></svg>&#160;Or signup with e-mail&#160;<svg height="5" width="70" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="10" x2="250" y2="10" style={{ stroke: "#d2d2d2", strokeWidth: "12" }} /></svg>
                             </div>
-
                             <form onSubmit={handleSubmit} action='#' className="mx-auto max-w-xs">
                                 <input
                                     name='fullName'
@@ -148,7 +144,7 @@ const Signup = () => {
                                 </button>
                                 <p className="mt-6 text-gray-600 text-center text-sm">
                                     Already have an account?&#160;
-                                    <Link to='/login' className="border-b text-sm border-gray-500 border-dotted">
+                                    <Link to='/login' className="text-sm hover:underline border-dotted">
                                         Login here
                                     </Link>
                                 </p>

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Notes = () => {
   return (
-    <div>
+    <div className='pt-[5rem]'>
       Notes!!
     </div>
   )
