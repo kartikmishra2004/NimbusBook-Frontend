@@ -1,8 +1,11 @@
 import { React, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../storage/Auth.jsx';
+import { toast } from 'react-toastify';
 
 const Signup = () => {
+
+    document.title = "NimbusBook - Signup";
 
     const [user, setUser] = useState({
         fullName: "",
@@ -48,10 +51,11 @@ const Signup = () => {
                     password: ""
                 });
                 setLoading(false);
-                console.log("Signup successful!!");
+                toast.success("Signup successful!!");
+                toast.success("Login successful!!");
                 navigate("/login");
             } else {
-                console.log("Signup failed!!");
+                toast.error(res_data.extraDetails ? res_data.extraDetails : res_data.message);
                 setLoading(false);
             }
         } catch (error) {
@@ -127,7 +131,7 @@ const Signup = () => {
                                     name='email'
                                     onChange={handleInput} value={user.email}
                                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                                    type="email"
+                                    type="text"
                                     placeholder="Email" autoComplete='on' />
                                 <input
                                     name='password'

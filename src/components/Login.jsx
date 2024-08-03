@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../storage/Auth.jsx'
+import { toast } from 'react-toastify';
 
 const Login = () => {
 
@@ -43,9 +44,10 @@ const Login = () => {
                     email: "",
                     password: "",
                 })
+                toast.success("Login successful!!");
                 navigate("/");
             } else {
-                console.log("Login failed!!!");
+                toast.error(res_data.extraDetails ? res_data.extraDetails : res_data.message);
             }
         } catch (error) {
             console.log("Login failed!!");
@@ -116,7 +118,7 @@ const Login = () => {
                                     value={user.email}
                                     name='email'
                                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                    type="email" placeholder="Email" autoComplete='on'/>
+                                    type="text" placeholder="Email" autoComplete='on'/>
                                 <input
                                     onChange={handleChange}
                                     value={user.password}
