@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
 
     const [token, setToken] = useState(localStorage.getItem('token') || '');
     const [user, setUser] = useState({});
+    const [notesData, setNotesData] = useState([])
 
     const storeTokenInLS = (serverToken) => {
         localStorage.setItem('token', serverToken);
@@ -22,7 +23,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('token');
         setUser({});
     }
-    
+
     // JWT Authentication - to get the currently logged in user data
     const userAuthentication = async () => {
         try {
@@ -50,7 +51,29 @@ export const AuthProvider = ({ children }) => {
         }
     }, [token]);
 
-    return <AuthContext.Provider value={{ storeTokenInLS, LogoutUser, isLoggedIn, user }}>
+    // Verification of user for fetching notes
+    const fetchNotes = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/api/v1/notes/get", {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const notesData = await response.json();
+            setNotesData(notesData);
+        } catch (error) {
+            console.log("Error fetching Notes!!");
+
+        }
+    }
+    useEffect(() => {
+        if (token) {
+            fetchNotes();
+        }
+    }, [token, fetchNotes]);
+
+    return <AuthContext.Provider value={{ storeTokenInLS, LogoutUser, isLoggedIn, user, notesData }}>
         {children}
     </AuthContext.Provider>
 }
