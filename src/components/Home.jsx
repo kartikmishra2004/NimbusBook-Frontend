@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import img1 from '../assets/img1.jpg'
 
 const Home = () => {
+
+  document.title = "NimbusBook - Home"
+
   return (
     <div className=' pt-[5rem]'>
       <main className=" bg-white h-screen">
@@ -17,7 +20,7 @@ const Home = () => {
                   Your Thoughts
                 </span>
               </h1>
-              <p className="text-sm sm:text-lg text-zinc-700 mt-6">
+              <p className="text-sm sm:text-lg text-zinc-600 mt-6">
                 NimbusBook is your ultimate notes-making app, crafted to make note-taking simple, organized, and accessible. Whether you're capturing ideas, tracking tasks, or planning projects, NimbusBook helps you stay on top of everything.
                 <br /><br />
                 Join NimbusBook today and streamline your note-taking process. Sign up now and organize your life, one note at a time!
