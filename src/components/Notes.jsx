@@ -106,9 +106,9 @@ const Notes = () => {
       </aside>
       <div className="p-4 sm:ml-64">
         <div className={`wellcome ${wellcomeMsg}`}>
-          <h1 className="wellcome sm:text-5xl text-[2.5rem] leading-none font-bold text-zinc-800">Welcome to NimbusBook, <span className='text-indigo-500'>{user.fullName}</span></h1>
+          <h1 className="wellcome sm:text-5xl text-[2.5rem] leading-none font-bold text-zinc-700">Welcome to NimbusBook, <span className='text-indigo-500'>{user.fullName}</span></h1>
           <p className='text-lg mt-5 sm:w-[60vw] w-[90vw] text-zinc-600'>NimbusBook is your personal cloud-based notes app. Here, you can easily create, edit, and organize your notes. Stay productive and keep all your important information at your fingertips. Let's get started!</p>
-          <h1 className="wellcome text-4xl font-bold mt-10 text-zinc-800">Steps to Create a Notes</h1>
+          <h1 className="wellcome text-4xl font-bold mt-10 text-zinc-700">Steps to Create a Notes</h1>
           <p className='text-lg mt-5 leading-10 sm:w-[60vw] w-[90vw] text-zinc-600'>
             1. Click "Create Note": On the sidebar, find and click the "Create Note" button to open the note creation form. <br />
             2. Enter Note Details: Fill in the note title and content in the provided fields. <br />

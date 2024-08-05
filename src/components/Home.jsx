@@ -12,9 +12,9 @@ const Home = () => {
         <div className="bg-white flex items-center overflow-hidden">
           <div className="container mx-auto px-6 flex justify-evenly relative py-16">
             <div className="sm:w-2/3 lg:w-2/5 flex flex-col relative">
-              <span className="w-20 h-2 bg-zinc-800 mb-12">
+              <span className="w-20 h-2 bg-zinc-700 mb-12">
               </span>
-              <h1 className="text-6xl sm:text-6xl font-bold flex flex-col leading-none text-zinc-800">
+              <h1 className="text-6xl sm:text-6xl font-bold flex flex-col leading-none text-zinc-700">
                 Organize
                 <span className="text-5xl sm:text-4xl">
                   Your Thoughts
