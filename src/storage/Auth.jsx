@@ -67,13 +67,30 @@ export const AuthProvider = ({ children }) => {
 
         }
     }
+
+    // Creating a notes
+    const ceateNotes = async (note) => {
+        try {
+            const response = await fetch("http://localhost:3000/api/v1/notes/create", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(note),
+            });
+        } catch (error) {
+            console.log("Failed to create notes!!", error);
+        }
+    }
+
     useEffect(() => {
         if (token) {
             fetchNotes();
         }
     }, [token, fetchNotes]);
 
-    return <AuthContext.Provider value={{ storeTokenInLS, LogoutUser, isLoggedIn, user, notesData }}>
+    return <AuthContext.Provider value={{ storeTokenInLS, LogoutUser, isLoggedIn, user, notesData, ceateNotes }}>
         {children}
     </AuthContext.Provider>
 }
