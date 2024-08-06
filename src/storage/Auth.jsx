@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 // Context
 export const AuthContext = createContext();
@@ -79,6 +80,12 @@ export const AuthProvider = ({ children }) => {
                 },
                 body: JSON.stringify(note),
             });
+            const createdRes = await response.json();
+            if (response.ok) {
+                toast.success("Notes created successfully!!")
+            } else {
+                toast.error(createdRes.message)
+            }
         } catch (error) {
             console.log("Failed to create notes!!", error);
         }
@@ -94,6 +101,12 @@ export const AuthProvider = ({ children }) => {
                     Authorization: `Bearer ${token}`,
                 }
             });
+            const deleteRes = await deleteNote.json();
+            if(deleteNote.ok) {
+                toast.success("Notes deleted Successfully!!")
+            } else{
+                toast.error(deleteRes.message);
+            }
         } catch (error) {
             log("Failed to delete notes!!", error);
         }

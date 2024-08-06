@@ -3,6 +3,8 @@ import { useAuth } from "../storage/Auth";
 import CreateNoteModal from './CreateNoteModal';
 import dropright from "../assets/dropright.svg";
 import deleteIcon from "../assets/delete.svg"
+import dropdown from "../assets/dropdown.svg"
+import edit from "../assets/edit.svg"
 
 const Notes = () => {
 
@@ -80,7 +82,7 @@ const Notes = () => {
         <div className="h-full px-3 py-4 overflow-y-auto bg-zinc-50">
           <ul className="space-y-2 font-medium">
             <li>
-              <div onClick={handleOpenModal} className="flex mb-3 py-3 cursor-pointer select-none items-center p-2 rounded-lg  hover:bg-indigo-100 bg-gray-200">
+              <div onClick={handleOpenModal} className="flex mb-3 h-[3.5rem] pl-5 cursor-pointer select-none items-center p-2 rounded-lg  hover:bg-indigo-100 bg-gray-200">
                 <svg className="flex-shrink-0 w-5 h-5 text-indigo-500 transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z" />
                   <path d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z" />
@@ -90,16 +92,19 @@ const Notes = () => {
               </div>
             </li>
             <li>
-              <div onClick={handleNotesToggle} className="flex mb-3 py-3 cursor-pointer items-center p-2 rounded-lg  bg-gray-200 hover:bg-indigo-100">
-                <svg className="flex-shrink-0 w-5 h-5 text-indigo-500 transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
-                  <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
-                </svg>
-                <span className="flex-1 ms-3 select-none text-gray-600 h-full whitespace-nowrap">Your notes</span>
+              <div onClick={handleNotesToggle} className="flex justify-between mb-3 h-[3.5rem] pl-5 cursor-pointer items-center p-2 rounded-lg  bg-gray-200 hover:bg-indigo-100">
+                <div className='flex justify-center items-center'>
+                  <svg className="flex-shrink-0 w-5 h-5 text-indigo-500 transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                    <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
+                  </svg>
+                  <span className="flex items-center ms-3 select-none text-gray-600 h-full whitespace-nowrap">Your notes</span>
+                </div>
+                <img className='w-[30px]' src={dropdown} alt="menu" />
               </div>
 
               <div onClick={handleOptionMenu} className='overflow-hidden w-[100%] h-max'>
                 <div className={`flex w-[100%] justify-center transition-all duration-500 ease-in-out py-1 overflow-hidden gap-5 relative rounded-b-xl ${notesToggle} text-gray-600 flex-col`}>
-                  {notesData.map((item) => (<div className='flex justify-between'><span key={item._id} onClick={() => handleOpenNotes({ content: item.content, title: item.title })} className='cursor-pointer w-[85%] flex justify-between items-center bg-gray-100 hover:bg-gray-200 -l-lg py-2 px-4 hover:text-gray-900'>{item.title}</span><span className='flex justify-center items-center w-[15%] bg-gray-200 rounded-r-lg' onClick={() => {deleteNotes(item._id), setNotesContent("Notes deleted!!")}}><img className='w-[20px] hover:brightness-75' src={deleteIcon} alt="delete" /></span></div>))}
+                  {notesData.map((item) => (<div className='flex justify-between'><span key={item._id} onClick={() => handleOpenNotes({ content: item.content, title: item.title })} className='cursor-pointer w-[85%] flex justify-between items-center bg-gray-100 hover:bg-gray-200 -l-lg py-2 px-4 hover:text-gray-900'>{item.title}</span><span className='flex justify-center items-center w-[15%] bg-gray-200 rounded-r-lg' onClick={() => { deleteNotes(item._id), setNotesContent("Notes deleted!!"), setNotesTitle("") }}><img className='w-[20px] hover:brightness-75' src={deleteIcon} alt="delete" /></span></div>))}
                 </div>
               </div>
             </li>
@@ -120,8 +125,12 @@ const Notes = () => {
         </div>
         <div className={`p-4 border-2 ${notesPreview} border-gray-200 border-dashed rounded-lg h-max`}>
           <h1 className='text-4xl font-bold text-gray-700 mb-3'>{notesTitle}</h1>
-          <p className='sm:text-lg text-[1rem] text-gray-600'>{notesContent}</p>
+          <pre className='sm:text-lg whitespace-pre-wrap break-words font-sans text-[1rem] text-gray-600'>{notesContent}</pre>
         </div>
+        <div className={`buttons ${notesPreview}`}>
+          <button type="button" class={`text-white ml-3 mt-3 bg-indigo-500 hover:bg-indigo-700 flex justify-center items-center transition-all duration-300 ease-in-out font-medium rounded-lg text-sm px-5 py-3 me-2 mb-2`}><span><img className='w-[18px] mr-1' src={edit} alt="l"/></span> Edit this notes</button>
+        </div>
+
         {showModel && <CreateNoteModal closeModel={closeModel} />}
       </div>
     </div>
