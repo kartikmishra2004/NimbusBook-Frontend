@@ -84,13 +84,28 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    // Deleting a notes
+    const deleteNotes = async (_id) => {
+        try {
+            const deleteNote = await fetch(`http://localhost:3000/api/v1/notes/delete/${_id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+        } catch (error) {
+            log("Failed to delete notes!!", error);
+        }
+    }
+
     useEffect(() => {
         if (token) {
             fetchNotes();
         }
     }, [token, fetchNotes]);
 
-    return <AuthContext.Provider value={{ storeTokenInLS, LogoutUser, isLoggedIn, user, notesData, ceateNotes }}>
+    return <AuthContext.Provider value={{ storeTokenInLS, LogoutUser, isLoggedIn, user, notesData, ceateNotes, deleteNotes }}>
         {children}
     </AuthContext.Provider>
 }

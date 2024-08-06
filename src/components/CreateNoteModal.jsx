@@ -28,10 +28,10 @@ const CreateNoteModal = ({ closeModel }) => {
 
     return (
         <div id="crud-modal" tabIndex="-1" aria-hidden="true" className="overflow-y-auto shadow-2xl overflow-x-hidden flex fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[100%] max-h-full backdrop-blur-sm bg-gray-500 bg-opacity-20">
-            <div className="relative flex justify-center items-center p-4 w-full max-w-md max-h-full">
-                <div className="relative bg-white rounded-lg shadow">
-                    <div className="flex items-center justify-between p-4 md:p-5 w-[50vw] border-b rounded-t">
-                        <h3 className="text-lg font-semibold text-gray-900">
+            <div className="relative flex justify-center items-center p-4 max-h-full">
+                <div className="relative bg-white rounded-lg sm:w-[60vw] w-[100vw] shadow">
+                    <div className="flex items-center justify-between p-4 md:p-5 w-ful border-b rounded-t">
+                        <h3 className="text-lg w-full font-semibold text-gray-900">
                             Create New Product
                         </h3>
                         <button onClick={closeModel} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-toggle="crud-modal">

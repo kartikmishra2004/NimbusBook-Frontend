@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import { useAuth } from "../storage/Auth";
 import CreateNoteModal from './CreateNoteModal';
-import dropright from "../assets/dropright.svg"
+import dropright from "../assets/dropright.svg";
+import deleteIcon from "../assets/delete.svg"
 
 const Notes = () => {
 
   document.title = "NimbusBook - Notes"
 
-  const { notesData } = useAuth()
-  const { user } = useAuth()
+  const { notesData } = useAuth();
+  const { user } = useAuth();
+  const { deleteNotes } = useAuth();
 
   const [notesToggle, setNotesToggle] = useState("translate-y-[0%]");
   const [notesTitle, setNotesTitle] = useState("")
@@ -66,8 +68,8 @@ const Notes = () => {
           <img className='w-[35px] h-[55px]' src={dropright} alt="menu" />
         </div>
       </button>
-      <aside id="cta-button-sidebar" className={`fixed pt-[5rem] top-0 left-0 z-40 w-64 h-screen border-r-2 border-gray-200 transition-all duration-500 ease-in-out ${options} sm:translate-x-0`} aria-label="Sidebar">
-        <div className='w-64 sm:hidden h-max pt-3 pr-5 bg-gray-50 flex justify-center border-r-2 border-gray-200 items-center'>
+      <aside id="cta-button-sidebar" className={`fixed pt-[5rem] top-0 left-0 z-40 w-[20rem] h-screen border-r-2 border-gray-200 transition-all duration-500 ease-in-out ${options} sm:translate-x-0`} aria-label="Sidebar">
+        <div className='w-[20rem] sm:hidden h-max pt-3 pr-5 bg-gray-50 flex justify-center border-r-2 border-gray-200 items-center'>
           <button onClick={handleSideMenu} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-toggle="crud-modal">
             <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
@@ -97,14 +99,14 @@ const Notes = () => {
 
               <div onClick={handleOptionMenu} className='overflow-hidden w-[100%] h-max'>
                 <div className={`flex w-[100%] justify-center transition-all duration-500 ease-in-out py-1 overflow-hidden gap-5 relative rounded-b-xl ${notesToggle} text-gray-600 flex-col`}>
-                  {notesData.map((item) => (<span onClick={() => handleOpenNotes({ content: item.content, title: item.title })} key={item._id} className='cursor-pointer bg-gray-100 hover:bg-indigo-50 rounded-lg py-2 px-4 hover:text-gray-900'>{item.title}</span>))}
+                  {notesData.map((item) => (<div className='flex justify-between'><span key={item._id} onClick={() => handleOpenNotes({ content: item.content, title: item.title })} className='cursor-pointer w-[85%] flex justify-between items-center bg-gray-100 hover:bg-gray-200 -l-lg py-2 px-4 hover:text-gray-900'>{item.title}</span><span className='flex justify-center items-center w-[15%] bg-gray-200 rounded-r-lg' onClick={() => {deleteNotes(item._id), setNotesContent("Notes deleted!!")}}><img className='w-[20px] hover:brightness-75' src={deleteIcon} alt="delete" /></span></div>))}
                 </div>
               </div>
             </li>
           </ul>
         </div>
       </aside>
-      <div className="p-4 sm:ml-64">
+      <div className="p-4 sm:ml-[20rem]">
         <div className={`wellcome ${wellcomeMsg}`}>
           <h1 className="wellcome sm:text-5xl text-[2.5rem] leading-none font-bold text-zinc-700">Welcome to NimbusBook, <span className='text-indigo-500'>{user.fullName}</span></h1>
           <p className='text-lg mt-5 sm:w-[60vw] w-[90vw] text-zinc-600'>NimbusBook is your personal cloud-based notes app. Here, you can easily create, edit, and organize your notes. Stay productive and keep all your important information at your fingertips. Let's get started!</p>
@@ -117,7 +119,7 @@ const Notes = () => {
           </p>
         </div>
         <div className={`p-4 border-2 ${notesPreview} border-gray-200 border-dashed rounded-lg h-max`}>
-          <h1 className='text-4xl font-semibold text-gray-800 mb-3'>{notesTitle}</h1>
+          <h1 className='text-4xl font-bold text-gray-700 mb-3'>{notesTitle}</h1>
           <p className='sm:text-lg text-[1rem] text-gray-600'>{notesContent}</p>
         </div>
         {showModel && <CreateNoteModal closeModel={closeModel} />}
