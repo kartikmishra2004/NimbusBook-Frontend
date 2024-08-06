@@ -5,6 +5,7 @@ import dropright from "../assets/dropright.svg";
 import deleteIcon from "../assets/delete.svg"
 import dropdown from "../assets/dropdown.svg"
 import edit from "../assets/edit.svg"
+import UpdateNoteModal from './UpdateNoteModal';
 
 const Notes = () => {
 
@@ -18,6 +19,7 @@ const Notes = () => {
   const [notesTitle, setNotesTitle] = useState("")
   const [notesContent, setNotesContent] = useState("Your notes will appear here.");
   const [showModel, setShowModel] = useState(false);
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [options, setOptions] = useState("-translate-x-full");
   const [notesPreview, setNotesPreview] = useState("hidden");
   const [wellcomeMsg, setWellcomeMsg] = useState("block");
@@ -35,6 +37,12 @@ const Notes = () => {
     setNotesTitle(title);
     setNotesPreview("block");
     setWellcomeMsg("hidden");
+    if (options === "translate-x-0") {
+      setOptions("-translate-x-full");
+    }
+    else {
+      setOptions("translate-x-0")
+    }
   }
 
   const handleOpenModal = () => {
@@ -43,15 +51,6 @@ const Notes = () => {
 
   const closeModel = () => {
     setShowModel(false);
-  }
-
-  const handleOptionMenu = () => {
-    if (options === "translate-x-0") {
-      setOptions("-translate-x-full");
-    }
-    else {
-      setOptions("translate-x-0")
-    }
   }
 
   const handleSideMenu = () => {
@@ -69,13 +68,27 @@ const Notes = () => {
     setNotesTitle("");
     setNotesPreview("hidden");
     setWellcomeMsg("block");
+    if (options === "translate-x-0") {
+      setOptions("-translate-x-full");
+    }
+    else {
+      setOptions("translate-x-0")
+    }
+  }
+
+  const handleUpdateModal = () => {
+    setShowUpdateModal(true);
+  }
+
+  const closeUpdateModal = () => {
+    setShowUpdateModal(false)
   }
 
   return (
     <div className='pt-[5rem]'>
       <button data-drawer-target="cta-button-sidebar" data-drawer-toggle="cta-button-sidebar" aria-controls="cta-button-sidebar" type="button" className="inline-flex items-center mt-5 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
-        <div className='flex bg-gray-200 rounded-r-md' onClick={handleSideMenu}>
-          <img className='w-[35px] h-[55px]' src={dropright} alt="menu" />
+        <div className='flex fixed mt-[3rem] bg-black opacity-25 rounded-r-md' onClick={handleSideMenu}>
+          <img className='w-[30px] h-[50px] invert' src={dropright} alt="menu" />
         </div>
       </button>
       <aside id="cta-button-sidebar" className={`fixed pt-[5rem] top-0 left-0 z-40 w-[20rem] h-screen border-r-2 border-gray-200 transition-all duration-500 ease-in-out ${options} sm:translate-x-0`} aria-label="Sidebar">
@@ -121,7 +134,7 @@ const Notes = () => {
       </aside>
       <div className="p-4 sm:ml-[20rem]">
         <div className={`wellcome ${wellcomeMsg}`}>
-          <h1 className="wellcome sm:text-5xl text-[2.5rem] leading-none font-bold text-zinc-700">Welcome to NimbusBook, <span className='text-indigo-500'>{user.fullName}</span></h1>
+          <h1 className="wellcome sm:text-5xl text-center sm:text-left text-[2.5rem] leading-none font-bold text-zinc-700">Welcome to NimbusBook, <span className='text-indigo-500'>{user.fullName}</span></h1>
           <p className='text-lg mt-5 sm:w-[60vw] w-[90vw] text-zinc-600'>NimbusBook is your personal cloud-based notes app. Here, you can easily create, edit, and organize your notes. Stay productive and keep all your important information at your fingertips. Let's get started!</p>
           <h1 className="wellcome text-4xl font-bold mt-10 text-zinc-700">Steps to Create a Notes</h1>
           <p className='text-lg mt-5 leading-10 sm:w-[60vw] w-[90vw] text-zinc-600'>
@@ -132,14 +145,15 @@ const Notes = () => {
           </p>
         </div>
         <div className={`p-4 border-2 ${notesPreview} border-gray-200 border-dashed rounded-lg h-max`}>
-          <h1 className='text-4xl font-bold text-gray-700 mb-3'>{notesTitle}</h1>
+          <h1 className='text-4xl whitespace-pre-wrap break-words font-bold text-gray-700 mb-3'>{notesTitle}</h1>
           <pre className='sm:text-lg whitespace-pre-wrap break-words font-sans text-[1rem] text-gray-600'>{notesContent}</pre>
         </div>
-        <div className={`buttons ${notesPreview}`}>
-          <button type="button" className={`text-white ml-3 mt-3 bg-indigo-500 hover:bg-indigo-700 flex justify-center items-center transition-all duration-300 ease-in-out font-medium rounded-lg text-sm px-5 py-3 me-2 mb-2`}><span><img className='w-[18px] mr-1' src={edit} alt="l" /></span> Edit this notes</button>
+        <div className={`buttons flex ${notesPreview}`}>
+          <button onClick={handleUpdateModal} type="button" className={`text-white ml-3 mt-3 bg-indigo-500 hover:bg-indigo-700 flex justify-center items-center transition-all duration-300 ease-in-out font-medium rounded-lg text-sm px-5 py-3 me-2 mb-2`}><span><img className='w-[18px] mr-1' src={edit} alt="l" /></span> Edit this notes</button>
         </div>
 
         {showModel && <CreateNoteModal closeModel={closeModel} />}
+        {showUpdateModal && <UpdateNoteModal closeUpdateModal={closeUpdateModal} />}
       </div>
     </div>
   )

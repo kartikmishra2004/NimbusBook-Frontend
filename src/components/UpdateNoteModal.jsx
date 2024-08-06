@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useAuth } from '../storage/Auth';
 
 
-const CreateNoteModal = ({ closeModel }) => {
+const UpdateNoteModal = ({ closeUpdateModal }) => {
 
     const [note, setNote] = useState({
         title: "",
@@ -23,7 +23,7 @@ const CreateNoteModal = ({ closeModel }) => {
     const handleCreateNotes = async (e) => {
         e.preventDefault();
         ceateNotes(note);
-        closeModel();
+        closeUpdateModal();
     }
 
     return (
@@ -32,9 +32,9 @@ const CreateNoteModal = ({ closeModel }) => {
                 <div className="relative bg-white rounded-lg sm:w-[60vw] w-[100vw] shadow">
                     <div className="flex items-center justify-between p-4 md:p-5 w-ful border-b rounded-t">
                         <h3 className="text-lg w-full font-semibold text-gray-900">
-                            Create New Notes
+                            Update Your Notes
                         </h3>
-                        <button onClick={closeModel} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-toggle="crud-modal">
+                        <button onClick={closeUpdateModal} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-toggle="crud-modal">
                             <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                             </svg>
@@ -62,4 +62,4 @@ const CreateNoteModal = ({ closeModel }) => {
     )
 }
 
-export default CreateNoteModal
+export default UpdateNoteModal
