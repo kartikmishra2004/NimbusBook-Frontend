@@ -33,6 +33,8 @@ const Notes = () => {
   const handleOpenNotes = ({ content, title }) => {
     setNotesContent(content);
     setNotesTitle(title);
+    setNotesPreview("block");
+    setWellcomeMsg("hidden");
   }
 
   const handleOpenModal = () => {
@@ -50,8 +52,6 @@ const Notes = () => {
     else {
       setOptions("translate-x-0")
     }
-    setNotesPreview("block");
-    setWellcomeMsg("hidden")
   }
 
   const handleSideMenu = () => {
@@ -61,6 +61,14 @@ const Notes = () => {
     else {
       setOptions("translate-x-0")
     }
+  }
+
+  const handleDeleteNote = (id) => {
+    deleteNotes(id);
+    setNotesContent("Notes deleted!!");
+    setNotesTitle("");
+    setNotesPreview("hidden");
+    setWellcomeMsg("block");
   }
 
   return (
@@ -102,9 +110,9 @@ const Notes = () => {
                 <img className='w-[30px]' src={dropdown} alt="menu" />
               </div>
 
-              <div onClick={handleOptionMenu} className='overflow-hidden w-[100%] h-max'>
+              <div className='overflow-hidden w-[100%] h-max'>
                 <div className={`flex w-[100%] justify-center transition-all duration-500 ease-in-out py-1 overflow-hidden gap-5 relative rounded-b-xl ${notesToggle} text-gray-600 flex-col`}>
-                  {notesData.map((item) => (<div className='flex justify-between'><span key={item._id} onClick={() => handleOpenNotes({ content: item.content, title: item.title })} className='cursor-pointer w-[85%] flex justify-between items-center bg-gray-100 hover:bg-gray-200 -l-lg py-2 px-4 hover:text-gray-900'>{item.title}</span><span className='flex justify-center items-center w-[15%] bg-gray-200 rounded-r-lg' onClick={() => { deleteNotes(item._id), setNotesContent("Notes deleted!!"), setNotesTitle("") }}><img className='w-[20px] hover:brightness-75' src={deleteIcon} alt="delete" /></span></div>))}
+                  {notesData.map((item) => (<div key={item._id} className='flex justify-between'><span onClick={() => handleOpenNotes({ content: item.content, title: item.title })} className='cursor-pointer w-[85%] flex justify-between items-center bg-gray-100 hover:bg-gray-200 -l-lg py-2 px-4 hover:text-gray-900'>{item.title}</span><span className='flex justify-center items-center w-[15%] bg-gray-200 rounded-r-lg' onClick={() => handleDeleteNote(item._id)}><img className='w-[20px] hover:brightness-75' src={deleteIcon} alt="delete" /></span></div>))}
                 </div>
               </div>
             </li>
@@ -128,7 +136,7 @@ const Notes = () => {
           <pre className='sm:text-lg whitespace-pre-wrap break-words font-sans text-[1rem] text-gray-600'>{notesContent}</pre>
         </div>
         <div className={`buttons ${notesPreview}`}>
-          <button type="button" class={`text-white ml-3 mt-3 bg-indigo-500 hover:bg-indigo-700 flex justify-center items-center transition-all duration-300 ease-in-out font-medium rounded-lg text-sm px-5 py-3 me-2 mb-2`}><span><img className='w-[18px] mr-1' src={edit} alt="l"/></span> Edit this notes</button>
+          <button type="button" className={`text-white ml-3 mt-3 bg-indigo-500 hover:bg-indigo-700 flex justify-center items-center transition-all duration-300 ease-in-out font-medium rounded-lg text-sm px-5 py-3 me-2 mb-2`}><span><img className='w-[18px] mr-1' src={edit} alt="l" /></span> Edit this notes</button>
         </div>
 
         {showModel && <CreateNoteModal closeModel={closeModel} />}
