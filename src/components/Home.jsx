@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     <div className=' pt-[5rem] font-sans'>
-      <main className=" bg-white h-screen">
+      <main className=" bg-white h-max">
         <div className="bg-white flex items-center overflow-hidden">
           <div className="container mx-auto px-6 flex justify-evenly relative sm:py-16 py-5">
             <div className="sm:w-2/3 lg:w-2/5 flex flex-col relative">
