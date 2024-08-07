@@ -91,6 +91,30 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+
+    // Updating a note
+    const updateNote = async ({ id, note }) => {
+        try {
+            const response = await fetch(`http://localhost:3000/api/v1/notes/update/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(note),
+            });
+            const updateRes = await response.json();
+            if(response.ok){
+                toast.success("Notes updated successfully!!");
+            } else{
+                toast.error(updateRes.message);
+            }
+        } catch (error) {
+            console.log("Failed to update notes!!", error);
+
+        }
+    }
+
     // Deleting a notes
     const deleteNotes = async (_id) => {
         try {
@@ -102,9 +126,9 @@ export const AuthProvider = ({ children }) => {
                 }
             });
             const deleteRes = await deleteNote.json();
-            if(deleteNote.ok) {
+            if (deleteNote.ok) {
                 toast.success("Notes deleted Successfully!!")
-            } else{
+            } else {
                 toast.error(deleteRes.message);
             }
         } catch (error) {
@@ -118,7 +142,7 @@ export const AuthProvider = ({ children }) => {
         }
     }, [token, fetchNotes]);
 
-    return <AuthContext.Provider value={{ storeTokenInLS, LogoutUser, isLoggedIn, user, notesData, ceateNotes, deleteNotes }}>
+    return <AuthContext.Provider value={{ storeTokenInLS, LogoutUser, isLoggedIn, user, notesData, ceateNotes, deleteNotes, updateNote }}>
         {children}
     </AuthContext.Provider>
 }

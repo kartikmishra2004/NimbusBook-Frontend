@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '../storage/Auth';
 
 
-const UpdateNoteModal = ({ closeUpdateModal }) => {
+const UpdateNoteModal = ({ closeUpdateModal, updateData, setNotesTitle, setNotesContent }) => {
 
     const [note, setNote] = useState({
         title: "",
@@ -18,16 +18,22 @@ const UpdateNoteModal = ({ closeUpdateModal }) => {
         })
     }
 
-    const { ceateNotes } = useAuth();
+    useEffect(() => {
+        setNote(updateData);
+    }, [updateData]);
 
-    const handleCreateNotes = async (e) => {
+    const { updateNote } = useAuth();
+
+    const UpdateNotes = async (e) => {
         e.preventDefault();
-        ceateNotes(note);
         closeUpdateModal();
+        updateNote({ note, id: updateData.id });
+        setNotesTitle(note.title);
+        setNotesContent(note.content);
     }
 
     return (
-        <div id="crud-modal" tabIndex="-1" aria-hidden="true" className="overflow-y-auto shadow-2xl overflow-x-hidden flex fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[100%] max-h-full backdrop-blur-sm bg-gray-500 bg-opacity-20">
+        <div id="crud-modal" tabIndex="-1" className="overflow-y-auto shadow-2xl overflow-x-hidden flex fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[100%] max-h-full backdrop-blur-sm bg-gray-500 bg-opacity-20">
             <div className="relative flex justify-center items-center p-4 max-h-full">
                 <div className="relative bg-white rounded-lg sm:w-[60vw] w-[100vw] shadow">
                     <div className="flex items-center justify-between p-4 md:p-5 w-ful border-b rounded-t">
@@ -35,13 +41,13 @@ const UpdateNoteModal = ({ closeUpdateModal }) => {
                             Update Your Notes
                         </h3>
                         <button onClick={closeUpdateModal} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-toggle="crud-modal">
-                            <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <svg className="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                             </svg>
                             <span className="sr-only">Close modal</span>
                         </button>
                     </div>
-                    <form onSubmit={handleCreateNotes} className="p-4 md:p-5">
+                    <form onSubmit={UpdateNotes} className="p-4 md:p-5">
                         <div className="grid gap-4 mb-4 grid-cols-2">
                             <div className="col-span-2">
                                 <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900">Title</label>
