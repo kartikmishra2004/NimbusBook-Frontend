@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
     // JWT Authentication - to get the currently logged in user data
     const userAuthentication = async () => {
         try {
-            const response = await fetch("http://localhost:3000/api/v1/auth/userauth", {
+            const response = await fetch("https://nimbus-book-server.vercel.app/api/v1/auth/userauth", {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }) => {
     // Verification of user for fetching notes
     const fetchNotes = async () => {
         try {
-            const response = await fetch("http://localhost:3000/api/v1/notes/get", {
+            const response = await fetch("https://nimbus-book-server.vercel.app/api/v1/notes/get", {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -72,7 +72,7 @@ export const AuthProvider = ({ children }) => {
     // Creating a notes
     const ceateNotes = async (note) => {
         try {
-            const response = await fetch("http://localhost:3000/api/v1/notes/create", {
+            const response = await fetch("https://nimbus-book-server.vercel.app/api/v1/notes/create", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -95,7 +95,7 @@ export const AuthProvider = ({ children }) => {
     // Updating a note
     const updateNote = async ({ id, note }) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/v1/notes/update/${id}`, {
+            const response = await fetch(`https://nimbus-book-server.vercel.app/api/v1/notes/update/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -118,7 +118,7 @@ export const AuthProvider = ({ children }) => {
     // Deleting a notes
     const deleteNotes = async (_id) => {
         try {
-            const deleteNote = await fetch(`http://localhost:3000/api/v1/notes/delete/${_id}`, {
+            const deleteNote = await fetch(`https://nimbus-book-server.vercel.app/api/v1/notes/delete/${_id}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
