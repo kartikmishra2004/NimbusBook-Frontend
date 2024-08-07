@@ -7,7 +7,7 @@ const Home = () => {
   document.title = "NimbusBook - Home"
 
   return (
-    <div className=' pt-[5rem]'>
+    <div className=' pt-[5rem] font-sans'>
       <main className=" bg-white h-screen">
         <div className="bg-white flex items-center overflow-hidden">
           <div className="container mx-auto px-6 flex justify-evenly relative sm:py-16 py-5">

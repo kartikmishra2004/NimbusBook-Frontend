@@ -27,7 +27,7 @@ const CreateNoteModal = ({ closeModel }) => {
     }
 
     return (
-        <div id="crud-modal" tabIndex="-1" className="overflow-y-auto shadow-2xl overflow-x-hidden flex fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[100%] max-h-full backdrop-blur-sm bg-gray-500 bg-opacity-20">
+        <div id="crud-modal" tabIndex="-1" className="overflow-y-auto font-sans shadow-2xl overflow-x-hidden flex fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[100%] max-h-full backdrop-blur-sm bg-gray-500 bg-opacity-20">
             <div className="relative flex justify-center items-center p-4 max-h-full">
                 <div className="relative bg-white rounded-lg sm:w-[60vw] w-[100vw] shadow">
                     <div className="flex items-center justify-between p-4 md:p-5 w-ful border-b rounded-t">

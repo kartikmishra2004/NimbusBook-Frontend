@@ -16,7 +16,7 @@ const Navbar = () => {
         }
     }
     return (
-        <nav className="bg-white border-zinc-200 border-b-2 font-nunito fixed w-[100%] z-50">
+        <nav className="bg-white border-zinc-200 border-b-2 font-sans fixed w-[100%] z-50">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-[1.25rem]">
                 <Link to='/' className="flex items-center">
                     <span><img className='w-[35px] mr-1' src={logo} alt="logo" /></span><span className="self-center text-3xl font-bold text-indigo-500 whitespace-nowrap">NimbusBook</span>

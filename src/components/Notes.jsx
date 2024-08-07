@@ -87,7 +87,7 @@ const Notes = () => {
   }
 
   return (
-    <div className='pt-[5rem]'>
+    <div className='pt-[5rem] font-sans'>
       <button data-drawer-target="cta-button-sidebar" data-drawer-toggle="cta-button-sidebar" aria-controls="cta-button-sidebar" type="button" className="inline-flex items-center mt-5 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
         <div className='flex fixed mt-[3rem] bg-black opacity-25 rounded-r-md' onClick={handleSideMenu}>
           <img className='w-[30px] h-[50px] invert' src={dropright} alt="menu" />
@@ -136,7 +136,7 @@ const Notes = () => {
       </aside>
       <div className="p-4 sm:ml-[20rem]">
         <div className={`wellcome ${wellcomeMsg}`}>
-          <h1 className="wellcome sm:text-5xl text-center sm:text-left text-[1.7rem] leading-none font-bold text-zinc-700">Welcome to NimbusBook, <span className='text-indigo-500'>{user.fullName}</span></h1>
+          <h1 className="wellcome sm:text-5xl text-center sm:text-left text-4xl leading-none font-bold text-zinc-700">Welcome to NimbusBook, <span className='text-indigo-500'>{user.fullName}</span></h1>
           <p className='sm:text-lg text-[1rem] mt-5 sm:w-[60vw] w-[90vw] text-zinc-600'>NimbusBook is your personal cloud-based notes app. Here, you can easily create, edit, and organize your notes. Stay productive and keep all your important information at your fingertips. Let's get started!</p>
           <h1 className="wellcome sm:text-4xl text-[1.7rem] sm:text-left text-center font-bold mt-10 text-zinc-700">Steps to Create a Note</h1>
           <p className='sm:text-lg text-[1rem] mt-5 leading-[2rem] sm:leading-10 sm:w-[60vw] w-[90vw] text-zinc-600'>
