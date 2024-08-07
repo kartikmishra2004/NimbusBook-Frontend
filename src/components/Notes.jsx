@@ -111,7 +111,7 @@ const Notes = () => {
                   <path d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z" />
                   <path d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z" />
                 </svg>
-                <span className="flex-1 ms-3 text-gray-600 whitespace-nowrap">Create notes</span>
+                <span className="flex-1 ms-3 text-gray-600 whitespace-nowrap">Create a note</span>
               </div>
             </li>
             <li>
@@ -127,7 +127,7 @@ const Notes = () => {
 
               <div className='overflow-hidden w-[100%] h-max'>
                 <div className={`flex w-[100%] justify-center transition-all duration-500 ease-in-out py-1 overflow-hidden gap-5 relative rounded-b-xl ${notesToggle} text-gray-600 flex-col`}>
-                  {notesData.map((item) => (<div key={item._id} className='flex justify-between'><span onClick={() => handleOpenNotes({ content: item.content, title: item.title })} className='cursor-pointer rounded-l-lg w-[85%] flex justify-between items-center bg-gray-100 hover:bg-gray-200 -l-lg py-2 px-4 hover:text-gray-900'>{item.title}</span><span onClick={() => handleUpdateModal({ title: item.title, content: item.content, id: item._id })} className='cursor-pointer hover:bg-gray-200 flex justify-center items-center w-[15%] bg-gray-100'><img className='w-[20px] hover:brightness-75' src={edit} alt="l" /></span><span className='cursor-pointer hover:bg-gray-200 flex justify-center items-center w-[15%] bg-gray-100 rounded-r-lg' onClick={() => handleDeleteNote(item._id)}><img className='w-[20px] hover:brightness-75' src={deleteIcon} alt="delete" /></span></div>))}
+                  {notesData.map((item) => (<div key={item._id} className='flex justify-between'><span onClick={() => handleOpenNotes({ content: item.content, title: item.title })} className='cursor-pointer rounded-l-lg w-[85%] flex justify-between items-center bg-gray-100 hover:bg-gray-200 -l-lg py-2 px-4 hover:text-gray-900'>{item.title.slice(0, 17)}{(item.title.length >= 17) ? "..." : ""}</span><span title='Edit note' onClick={() => handleUpdateModal({ title: item.title, content: item.content, id: item._id })} className='cursor-pointer hover:bg-gray-200 flex justify-center items-center w-[15%] bg-gray-100'><img className='w-[20px] hover:brightness-75' src={edit} alt="l" /></span><span title='Delete note' className='cursor-pointer hover:bg-gray-200 flex justify-center items-center w-[15%] bg-gray-100 rounded-r-lg' onClick={() => handleDeleteNote(item._id)}><img className='w-[20px] hover:brightness-75' src={deleteIcon} alt="delete" /></span></div>))}
                 </div>
               </div>
             </li>
@@ -136,14 +136,14 @@ const Notes = () => {
       </aside>
       <div className="p-4 sm:ml-[20rem]">
         <div className={`wellcome ${wellcomeMsg}`}>
-          <h1 className="wellcome sm:text-5xl text-center sm:text-left text-[2.5rem] leading-none font-bold text-zinc-700">Welcome to NimbusBook, <span className='text-indigo-500'>{user.fullName}</span></h1>
-          <p className='text-lg mt-5 sm:w-[60vw] w-[90vw] text-zinc-600'>NimbusBook is your personal cloud-based notes app. Here, you can easily create, edit, and organize your notes. Stay productive and keep all your important information at your fingertips. Let's get started!</p>
-          <h1 className="wellcome text-4xl font-bold mt-10 text-zinc-700">Steps to Create a Notes</h1>
-          <p className='text-lg mt-5 leading-10 sm:w-[60vw] w-[90vw] text-zinc-600'>
-            1. Click "Create Note": On the sidebar, find and click the "Create Note" button to open the note creation form. <br />
-            2. Enter Note Details: Fill in the note title and content in the provided fields. <br />
-            3. Save Your Note: Once you have entered all the details, click the "Save" button to save your note. <br />
-            4. View Your Note: Your new note will appear in the sidebar list. Click on it to view or edit. <br />
+          <h1 className="wellcome sm:text-5xl text-center sm:text-left text-[1.7rem] leading-none font-bold text-zinc-700">Welcome to NimbusBook, <span className='text-indigo-500'>{user.fullName}</span></h1>
+          <p className='sm:text-lg text-[1rem] mt-5 sm:w-[60vw] w-[90vw] text-zinc-600'>NimbusBook is your personal cloud-based notes app. Here, you can easily create, edit, and organize your notes. Stay productive and keep all your important information at your fingertips. Let's get started!</p>
+          <h1 className="wellcome sm:text-4xl text-[1.7rem] sm:text-left text-center font-bold mt-10 text-zinc-700">Steps to Create a Note</h1>
+          <p className='sm:text-lg text-[1rem] mt-5 leading-[2rem] sm:leading-10 sm:w-[60vw] w-[90vw] text-zinc-600'>
+            1. Click "Create a note" : On the sidebar, find and click the "Create a note" button to open the note creation form. <br />
+            2. Enter note details : Fill in the note title and content in the provided fields. <br />
+            3. Save your note: Once you have entered all the details, click the "Save" button to save your note. <br />
+            4. View your note: Your new note will appear in the sidebar list. Click on it to view, edit or delete. <br />
           </p>
         </div>
         <div className={`p-4 border-2 ${notesPreview} border-gray-200 border-dashed rounded-lg h-max`}>

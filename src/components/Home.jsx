@@ -10,17 +10,17 @@ const Home = () => {
     <div className=' pt-[5rem]'>
       <main className=" bg-white h-screen">
         <div className="bg-white flex items-center overflow-hidden">
-          <div className="container mx-auto px-6 flex justify-evenly relative py-16">
+          <div className="container mx-auto px-6 flex justify-evenly relative sm:py-16 py-5">
             <div className="sm:w-2/3 lg:w-2/5 flex flex-col relative">
-              <span className="w-20 h-2 bg-zinc-700 mb-12">
+              <span className="w-20 h-2 bg-zinc-700 mb-2 sm:mb-12">
               </span>
-              <h1 className="text-6xl sm:text-6xl font-bold flex flex-col leading-none text-zinc-700">
+              <h1 className="text-5xl sm:text-6xl font-bold flex flex-col leading-none text-zinc-700">
                 Organize
-                <span className="text-5xl sm:text-4xl">
+                <span className="text-4xl sm:text-4xl">
                   Your Thoughts
                 </span>
               </h1>
-              <p className="text-sm sm:text-lg text-zinc-600 mt-6">
+              <p className="text-[1rem] sm:text-lg text-zinc-600 mt-6">
                 NimbusBook is your ultimate notes-making app, crafted to make note-taking simple, organized, and accessible. Whether you're capturing ideas, tracking tasks, or planning projects, NimbusBook helps you stay on top of everything.
                 <br /><br />
                 Join NimbusBook today and streamline your note-taking process. Sign up now and organize your life, one note at a time!
