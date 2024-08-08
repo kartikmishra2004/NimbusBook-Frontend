@@ -20,7 +20,7 @@ const Notes = () => {
   const [notesContent, setNotesContent] = useState("Your notes will appear here.");
   const [showModel, setShowModel] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
-  const [options, setOptions] = useState("-translate-x-full");
+  const [options, setOptions] = useState("translate-x-0");
   const [notesPreview, setNotesPreview] = useState("hidden");
   const [wellcomeMsg, setWellcomeMsg] = useState("block");
   const [updateData, setUpdateData] = useState({ title: "", content: "", id: "" });
