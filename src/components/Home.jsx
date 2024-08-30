@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import img1 from '../assets/img1.jpg'
+import { useAuth } from "../storage/Auth"
 
 const Home = () => {
+
+  const { isLoggedIn } = useAuth();
 
   document.title = "NimbusBook - Home"
 
@@ -29,7 +32,7 @@ const Home = () => {
                 <Link to="/notes" className="py-2 px-4 rounded-lg bg-indigo-500 border-indigo-500 border-2 text-white text-md mr-4 hover:bg-indigo-700 transition-all duration-300 ease-in-out">
                   Get started
                 </Link>
-                <Link to='/login' className="py-2 px-4 rounded-lg bg-transparent border-2 border-indigo-500 text-indigo-500 text-md transition-all duration-300 ease-in-out">
+                <Link to='/login' className={`py-2 px-4 ${isLoggedIn ? "hidden" : "block"} rounded-lg bg-transparent border-2 border-indigo-500 text-indigo-500 text-md transition-all duration-300 ease-in-out`}>
                   Login
                 </Link>
               </div>
